@@ -48,6 +48,10 @@ class Firebase {
   getCurrentUsername(): string | null {
     return this.auth.currentUser && this.auth.currentUser.displayName;
   }
+
+  linksDatabaseReference(): firebase.database.Reference {
+    return firebase.database().ref("links");
+  }
 }
 
 export default new Firebase();
