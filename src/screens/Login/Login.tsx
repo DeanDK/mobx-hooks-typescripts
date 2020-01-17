@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
-
 import firebase from "../../firebase/firebase";
 import { username, email, password } from "../../constants";
 import { ILoginCredidentials } from "../../interface/user";
 import "./Login.css";
+import { RootStoreContext } from "../../stores/rootStore";
 
 const Login: React.FC = () => {
+  const rootStore = useContext(RootStoreContext);
   const [userInput, setUserInput] = useReducer(
     (state: ILoginCredidentials, newState: ILoginCredidentials) => ({
       ...state,
@@ -19,11 +20,9 @@ const Login: React.FC = () => {
   );
 
   useEffect(() => {
-    if (!localStorage.getItem("refreshToken")) onRegister();
-    const onAuthChanged: Promise<any> = firebase.isInitialized();
-    onAuthChanged.then((data: any) =>
-      localStorage.setItem("refreshToken", data.refreshToken)
-    );
+    if (!localStorage.getItem("isAccountCreated")) {
+      rootStore.userStore.register(username, email, password);
+    }
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -32,11 +31,15 @@ const Login: React.FC = () => {
     setUserInput({ [name]: newValue });
   };
 
+  const handleSubmit = (e: React.FormEvent): void => {
+    rootStore.userStore.login(userInput.email, userInput.password);
+  };
+
   return (
     <Grid verticalAlign={"middle"} centered columns={4}>
       <Grid.Row>
         <Grid.Column>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Input
               label={"Email"}
               placeholder={"jonhdoe@test.com"}
@@ -45,7 +48,7 @@ const Login: React.FC = () => {
             />
             <Form.Input
               label={"Password"}
-              placeholder={"password"}
+              placeholder={"Password"}
               onChange={e => handleChange(e)}
               name={"password"}
             />
@@ -57,14 +60,6 @@ const Login: React.FC = () => {
       </Grid.Row>
     </Grid>
   );
-
-  async function onRegister(): Promise<void> {
-    try {
-      await firebase.register(username, email, password);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
 };
 
 export default Login;
