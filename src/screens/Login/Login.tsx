@@ -1,10 +1,10 @@
 import React, { useEffect, useReducer, useContext } from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
-import firebase from "../../firebase/firebase";
+
 import { username, email, password } from "../../constants";
 import { ILoginCredidentials } from "../../interface/user";
-import "./Login.css";
 import { RootStoreContext } from "../../stores/rootStore";
+import "./Login.css";
 
 const Login: React.FC = () => {
   const rootStore = useContext(RootStoreContext);
@@ -23,7 +23,7 @@ const Login: React.FC = () => {
     if (!localStorage.getItem("isAccountCreated")) {
       rootStore.userStore.register(username, email, password);
     }
-  }, []);
+  }, [rootStore.userStore]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const name = e.target.name;

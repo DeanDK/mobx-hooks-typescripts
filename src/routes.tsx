@@ -1,14 +1,18 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Login from "./screens/Login/Login";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Home from "./components/Home/Home";
 
 const Routes: React.FC = () => {
   return (
-    <Route>
-      <Switch>
-        <Login />
-      </Switch>
-    </Route>
+    <Switch>
+      <Route exact path={"/"} component={Login} />
+      <Route
+        path={"/(.+)"}
+        render={() => <PrivateRoute path={"/home"} component={Home} />}
+      />
+    </Switch>
   );
 };
 
