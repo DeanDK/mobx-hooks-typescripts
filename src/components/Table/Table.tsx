@@ -1,8 +1,9 @@
 import React from "react";
-import { Icon, Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
+import { observer } from "mobx-react-lite";
 
 import "./Table.css";
-import { ILinks } from "../../interface/links";
+import { ILinks } from "../../models/links";
 
 type IProps = {
   /** array of objects of a type ILinks */
@@ -21,11 +22,15 @@ const TableContainer = ({ links }: IProps) => (
       {links.map((link, index) => (
         <Table.Row key={index}>
           <Table.Cell>{link.name}</Table.Cell>
-          <Table.Cell textAlign="right">{link.url}</Table.Cell>
+          <Table.Cell textAlign="left">
+            <a href={link.url} target={"_blank"}>
+              {link.url}
+            </a>
+          </Table.Cell>
         </Table.Row>
       ))}
     </Table.Body>
   </Table>
 );
 
-export default TableContainer;
+export default observer(TableContainer);

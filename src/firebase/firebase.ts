@@ -52,6 +52,10 @@ class Firebase {
   linksDatabaseReference(): firebase.database.Reference {
     return firebase.database().ref("links");
   }
+
+  newLinkDatabaseReference(index: number): firebase.database.Reference {
+    return firebase.database().ref(`links/${index}`);
+  }
 }
 
 export default new Firebase();

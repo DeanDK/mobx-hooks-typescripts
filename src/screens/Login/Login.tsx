@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useContext } from "react";
 import { Button, Form, Grid } from "semantic-ui-react";
 
 import { username, email, password } from "../../constants";
-import { ILoginCredidentials } from "../../interface/user";
+import { ILoginCredidentials } from "../../models/user";
 import { RootStoreContext } from "../../stores/rootStore";
 import "./Login.css";
 
