@@ -50,7 +50,13 @@ const Home: React.FC = () => {
   const renderTable = () => {
     if (isLinksListenerOpen) {
       return (
-        <Grid stackable verticalAlign={"middle"} columns={3} centered>
+        <Grid
+          stackable
+          verticalAlign={"middle"}
+          columns={3}
+          centered
+          data-test={"home-screen"}
+        >
           <Grid.Row>
             <Grid.Column>
               <SearchField

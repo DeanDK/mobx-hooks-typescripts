@@ -45,14 +45,20 @@ const Login: React.FC = () => {
               placeholder={"jonhdoe@test.com"}
               onChange={e => handleChange(e)}
               name={"email"}
+              data-test={"login-email-input"}
             />
             <Form.Input
               label={"Password"}
               placeholder={"Password"}
               onChange={e => handleChange(e)}
               name={"password"}
+              data-test={"login-password-input"}
             />
-            <Button type="submit" disabled={false}>
+            <Button
+              type="submit"
+              disabled={false}
+              data-test={"login-submit-button"}
+            >
               Submit
             </Button>
           </Form>
