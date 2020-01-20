@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import { firebaseLinksPath } from "../constants/firebase";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -50,11 +51,11 @@ class Firebase {
   }
 
   linksDatabaseReference(): firebase.database.Reference {
-    return firebase.database().ref("links");
+    return firebase.database().ref(firebaseLinksPath);
   }
 
   newLinkDatabaseReference(index: number): firebase.database.Reference {
-    return firebase.database().ref(`links/${index}`);
+    return firebase.database().ref(`${firebaseLinksPath}/${index}`);
   }
 }
 

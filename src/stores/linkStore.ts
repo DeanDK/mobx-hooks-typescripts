@@ -14,7 +14,11 @@ export default class LinkStore {
   @observable isLinksListenerOpen: boolean = false;
 
   @computed get getLinks(): ILinks[] {
-    return toJS(this.links);
+    return toJS(this.removeUndefined);
+  }
+
+  @computed get removeUndefined(): ILinks[] {
+    return this.links.filter(item => item !== undefined);
   }
 
   @action openLinksListener = (): void => {

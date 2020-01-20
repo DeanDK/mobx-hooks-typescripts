@@ -7,7 +7,7 @@ import Home from "./screens/Home/Home";
 const Routes: React.FC = () => {
   return (
     <Switch>
-      <Route exact path={"/"} component={Home} />
+      <Route exact path={"/"} component={Login} />
       <Route
         path={"/(.+)"}
         render={() => <PrivateRoute path={"/home"} component={Home} />}
