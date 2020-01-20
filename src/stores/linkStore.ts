@@ -45,4 +45,9 @@ export default class LinkStore {
       }
     );
   };
+
+  @action removeLink = (index: number): void => {
+    const linkDbRef = firebase.newLinkDatabaseReference(index);
+    linkDbRef.remove();
+  };
 }

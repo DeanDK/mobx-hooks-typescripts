@@ -57,6 +57,13 @@ class Firebase {
   newLinkDatabaseReference(index: number): firebase.database.Reference {
     return firebase.database().ref(`${firebaseLinksPath}/${index}`);
   }
+
+  databaseChildReference(): firebase.database.Reference {
+    return firebase
+      .database()
+      .ref()
+      .child(firebaseLinksPath);
+  }
 }
 
 export default new Firebase();
