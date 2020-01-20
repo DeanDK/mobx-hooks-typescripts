@@ -40,7 +40,7 @@ class Firebase {
     });
   }
 
-  isInitialized(): Promise<any> {
+  isInitialized(): Promise<unknown> {
     return new Promise(resolve => {
       this.auth.onAuthStateChanged(resolve);
     });

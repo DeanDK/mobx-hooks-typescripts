@@ -64,12 +64,14 @@ const Home: React.FC = () => {
                 placeholder={"enter the site name"}
                 name={"name"}
                 handleChange={handleChange}
+                dataTest={"home-name-input"}
               />
               <SearchField
                 label={"LINK"}
                 placeholder={"c/p website url"}
                 name={"url"}
                 handleChange={handleChange}
+                dataTest={"home-link-input"}
               />
               <ButtonField handleSubmit={handleSubmit} />
               <TableContainer links={links} />

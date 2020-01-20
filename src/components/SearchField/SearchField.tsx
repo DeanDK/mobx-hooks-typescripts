@@ -8,7 +8,8 @@ const SearchField = ({
   label,
   placeholder,
   name,
-  handleChange
+  handleChange,
+  dataTest
 }: InputProps) => (
   <Input
     label={label}
@@ -16,6 +17,7 @@ const SearchField = ({
     placeholder={placeholder}
     onChange={e => handleChange(e)}
     name={name}
+    data-test={dataTest}
   />
 );
 

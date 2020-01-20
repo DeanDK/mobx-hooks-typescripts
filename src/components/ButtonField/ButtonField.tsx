@@ -6,7 +6,11 @@ type ButtonProps = {
 };
 
 const ButtonField = ({ handleSubmit }: ButtonProps) => (
-  <Button attached="bottom" onClick={handleSubmit}>
+  <Button
+    attached="bottom"
+    onClick={handleSubmit}
+    data-test={"home-submit-button"}
+  >
     Submit URL
   </Button>
 );

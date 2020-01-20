@@ -7,10 +7,10 @@ context("Login Sreen", function() {
     // check if email input is rendered
     cy.get('[data-test="login-email-input"]').should("be.visible");
 
-    // check if email input is rendered
+    // check if password input is rendered
     cy.get('[data-test="login-password-input"]').should("be.visible");
 
-    // check if email input is rendered
+    // check if submit button is rendered
     cy.get('[data-test="login-submit-button"]').should("be.visible");
   });
 

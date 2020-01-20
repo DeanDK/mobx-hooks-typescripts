@@ -12,7 +12,7 @@ type IProps = {
 
 const TableContainer = ({ links }: IProps) => (
   <Table celled striped>
-    <Table.Header>
+    <Table.Header data-test={"table"}>
       <Table.Row>
         <Table.HeaderCell colSpan="3">Custom Bookmark</Table.HeaderCell>
       </Table.Row>
@@ -21,7 +21,7 @@ const TableContainer = ({ links }: IProps) => (
     <Table.Body>
       {links.map((link, index) => (
         <Table.Row key={index}>
-          <Table.Cell>{link.name}</Table.Cell>
+          <Table.Cell data-test={"table-row-name"}>{link.name}</Table.Cell>
           <Table.Cell textAlign="left">
             <a href={link.url} target={"_blank"}>
               {link.url}
